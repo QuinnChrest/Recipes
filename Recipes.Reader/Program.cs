@@ -32,8 +32,11 @@ try
         {
             var text = page.GetText();
             var client = new ChatClient("gpt-4o-mini", openai_api_key);
-            var completion = client.CompleteChat($"This is a recipe that I have scanned in, could you return it back to me with markdown formatting. I only want the recipe int he result you return me because I will ingest that data: \n {text}");
-            File.WriteAllText(Path.Combine(output_folder, $"{Path.GetFileNameWithoutExtension(file)}.txt"), completion.Value.Content[0].Text);
+            var completion = client.CompleteChat($"This is a recipe that I have scanned in, could you return it back to me with markdown formatting. I only want the recipe in the result because I will ingest that data: \n {text}");
+
+            var output_file_path = Path.Combine(output_folder, $"{Path.GetFileNameWithoutExtension(file)}.txt");
+            File.WriteAllText(output_file_path, completion.Value.Content[0].Text);
+            Console.WriteLine($"GPT outputed to: {output_file_path}");
         }
     }
 }
