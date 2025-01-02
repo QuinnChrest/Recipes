@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipes.UI.Data;
 
@@ -11,9 +12,11 @@ using Recipes.UI.Data;
 namespace Recipes.UI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250102034639_InitialTables")]
+    partial class InitialTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,48 +238,6 @@ namespace Recipes.UI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Name = "Salad"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Name = "Snack"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Name = "Dessert"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Name = "Beverage"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Name = "Soup"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Name = "Appetizer"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            Name = "Main Dish"
-                        },
-                        new
-                        {
-                            ID = 8,
-                            Name = "Cocktail"
-                        });
                 });
 
             modelBuilder.Entity("Recipes.UI.Models.Recipe", b =>
@@ -314,17 +275,6 @@ namespace Recipes.UI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Recipes");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Author = "Virginia Wahus",
-                            Category = 0,
-                            Content = "# Peanut Butter Round-Up Cookies\r\n\r\n**By:** Virginia Wahus\r\n\r\n## Ingredients\r\n\r\n- 1 cup shortening\r\n- 2 cups flour\r\n- 1 cup brown sugar\r\n- 3/4 cup sugar\r\n- 2 teaspoons baking soda\r\n- 1/2 teaspoon salt\r\n- 2 eggs\r\n- 1 cup oatmeal\r\n- 1 cup creamy peanut butter\r\n\r\n## Instructions\r\n\r\n1. Preheat the oven to 350°F (175°C).\r\n2. Shape the dough into 1-inch balls.\r\n3. Place the balls on an ungreased cookie sheet.\r\n4. Press each ball with a fork to create a crisscross pattern.\r\n5. Bake for 8 to 10 minutes.",
-                            CreatedDate = new DateTime(2025, 1, 1, 22, 17, 3, 680, DateTimeKind.Local).AddTicks(3061),
-                            Name = "Peanut Butter Round-Up Cookies"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
